@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Rinko Kawauchi – Galerija</title>
+
+  <style>
+    :root{
+      --bg: #f6f6f7;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #666;
+      --max-width: 1100px;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin:0;
+      background: linear-gradient(180deg, var(--bg), #fff);
+      font-family: Arial, sans-serif;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+      color:var(--text);
+      scroll-behavior: smooth; /* glatki scroll */
+    }
+
+    .wrap{
+      max-width:var(--max-width);
+      width:100%;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      margin-bottom:30px;
+    }
+    .logo{
+      width:55px;height:55px;
+      background:#fff;
+      border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:bold;color:#b44a6c;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+      font-size:1.2rem;
+    }
+    h1{ margin:0; font-size:1.4rem; }
+
+    .content{
+      display:grid;
+      grid-template-columns:1fr 350px;
+      gap:30px;
+    }
+
+    main, .meta{
+      background:var(--card);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .galerija{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+
+    .galerija img, .galerija picture img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      border-radius:10px;
+      transition:transform 0.45s, box-shadow 0.45s;
+      cursor:pointer;
+      display:block;
+    }
+
+    /* HOOVER EFFECT NA SVE SLIKE */
+    .galerija img:hover, .galerija picture img:hover{
+      transform:scale(1.08) translateY(-6px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .embed{
+      margin-top:12px;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid #eee;
+    }
+    .embed iframe, .embed object, .embed video{
+      width:100%;height:220px;border:0;
+      display:block;
+    }
+
+    footer{
+      margin-top:20px;
+      text-align:center;
+      color:var(--muted);
+    }
+
+    @media(max-width:900px){
+      .content{ grid-template-columns:1fr; }
+      .galerija{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:550px){
+      .galerija{ grid-template-columns:1fr; }
+      .galerija img{ height:180px; }
+    }
+
+    /* Simple form styling */
+    .meta form {
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-top:14px;
+    }
+    .meta input, .meta textarea {
+      padding:8px; border:1px solid #ddd; border-radius:6px;
+    }
+    .meta button {
+      padding:10px; background:#b44a6c; color:#fff;
+      border-radius:6px; border:0; cursor:pointer;
+    }
+
+    /* HOOVER EFFECT ZA IMAGE MAP (klik-zone) */
+    area {
+      cursor: pointer;
+    }
+    area:hover {
+      outline: 3px solid rgba(255,0,0,0.6);
+    }
+
+    /* TEKST ISPOD PRVE SLIKE */
+    .klikni-napomena {
+      text-align:center;
+      color:#b44a6c;
+      font-weight:bold;
+      margin-top:5px;
+      font-size:0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo">RK</div>
+    <div>
+      <h1>Rinko Kawauchi — Poetske fotografije</h1>
+      <p style="color:var(--muted); margin:0;">Umjetnost svjetlosti i svakodnevnih trenutaka.</p>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <main>
+
+      <h2>O umjetnici</h2>
+      <p style="color:var(--muted);">
+        Rinko Kawauchi japanska je fotografkinja poznata po poetskim prikazima svakodnevice.
+      </p>
+
+      <h2 style="margin-top:20px;">Mala galerija</h2>
+
+      <div class="galerija">
+
+        <!-- PRVA SLIKA S IMAGE MAP + TEKST -->
+        <div>
+          <picture>
+            <source srcset="images/slika1.jpg" type="image/jpeg">
+            <img src="images/slika1.jpg" alt="" loading="lazy" usemap="#mapa">
+          </picture>
+          <p class="klikni-napomena">Klikni na sliku za slanje poruke</p>
+        </div>
+
+        <img src="images/slika2.jpg" alt="" loading="lazy">
+        <img src="images/slika3.jpg" alt="" loading="lazy">
+        <img src="images/slika4.jpg" alt="" loading="lazy">
+        <img src="images/slika5.jpg" alt="" loading="lazy">
+        <img src="images/slika6.jpg" alt="" loading="lazy">
+
+      </div>
+
+      <!-- IMAGE MAP -->
+      <map name="mapa">
+        <area shape="rect" coords="10,10,200,140" href="#posalji" alt="Klik za slanje">
+        <area shape="circle" coords="300,100,50" href="#info2" alt="Sekcija 2">
+      </map>
+
+      <h3 style="margin-top:20px;">Audio zapis</h3>
+      <audio controls>
+        <source src="audio/zapis.mp3" type="audio/mpeg">
+      </audio>
+
+    </main>
+
+    <aside>
+      <div class="meta">
+
+        <h2>Video: Rinko Kawauchi</h2>
+        <p>Visual Poetry Workshop:</p>
+
+        <div class="embed">
+          <iframe
+            title="Vimeo video"
+            src="https://player.vimeo.com/video/21198482"
+            allowfullscreen></iframe>
+        </div>
+
+        <h3 style="margin-top:20px;">Video (lokalno)</h3>
+        <div class="embed">
+          <video controls>
+            <source src="video/kratki.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <h3 style="margin-top:20px;">PDF intervju</h3>
+        <div class="embed">
+          <object data="2010_RK-SSAW-SS.pdf" type="application/pdf">
+            <p>Vaš preglednik ne može prikazati PDF.
+              <a href="2010_RK-SSAW-SS.pdf" download>Preuzmi PDF</a>
+            </p>
+          </object>
+        </div>
+
+        <h3 style="margin-top:20px;">Kontakt obrazac</h3>
+        <form>
+          <label>Ime</label>
+          <input type="text" placeholder="Unesi ime">
+
+          <label>Email</label>
+          <input type="email" placeholder="Unesi email">
+
+          <label>Poruka</label>
+          <textarea rows="3" placeholder="Upiši poruku..."></textarea>
+
+          <!-- DODAN ID ZA LINK -->
+          <button type="submit" id="posalji">Pošalji</button>
+        </form>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <p style="text-align: center; margin-top: 40px;">
+    <em>Lucia Šimac</em>
+  </p>
+
+</div>
+</body>
+</html>
